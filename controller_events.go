@@ -2,7 +2,6 @@ package main
 
 import (
   r "github.com/dancannon/gorethink"
-  "github.com/dancannon/gorethink/types"
   "net/http"
   "log"
   "fmt"
@@ -136,6 +135,7 @@ func IndexEventsHandler(w http.ResponseWriter, req *http.Request) {
   fmt.Println("")
   log.Println("Attempting to list Events")
   events := []Event{}
+  // var events []Event
 
   //// Pagination
   page := 1
@@ -237,7 +237,7 @@ func CreateUserEventHandler(w http.ResponseWriter, req *http.Request) {
     if _, ok := rawParams.Event["lat"]; ok {
       lon, _ := strconv.ParseFloat(rawParams.Event["lon"], 64)
       lat, _ := strconv.ParseFloat(rawParams.Event["lat"], 64)
-      event.Location = types.Point{ Lon: lon, Lat: lat, }
+      event.Location = []float64{lon, lat,}
     }
   }
   if s_date, ok := rawParams.Event["start_date"]; ok {
@@ -342,7 +342,7 @@ func UpdateUserEventHandler(w http.ResponseWriter, req *http.Request) {
     if _, ok := rawParams.Event["lat"]; ok {
       lon, _ := strconv.ParseFloat(rawParams.Event["lon"], 64)
       lat, _ := strconv.ParseFloat(rawParams.Event["lat"], 64)
-      event.Location = types.Point{ Lon: lon, Lat: lat, }
+      event.Location = []float64{lon, lat,}
     }
   }
 

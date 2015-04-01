@@ -1,7 +1,6 @@
 package main
 
 import (
-  "github.com/dancannon/gorethink/types"
 	"time"
 )
 
@@ -44,7 +43,7 @@ type Event struct {
   PictureUrl   string      `gorethink:"picture_url"   json:"picture_url"`
   Lon          string      `gorethink:"-"             json:"lon"`
   Lat          string      `gorethink:"-"             json:"lat"`
-  Location     types.Point `gorethink:"location"      json:"location"`
+  Location     []float64   `gorethink:"location"      json:"location"`
   Title        string      `gorethink:"title"         json:"title"`
   Description  string      `gorethink:"description"   json:"description"`
   PrivacyLevel int         `gorethink:"privacy_level" json:"privacy_level"`
