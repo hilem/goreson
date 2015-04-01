@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+  body {
+  	margin: 0;
+  	font-family: Helvetica, Arial, sans-serif;
+  	font-size: 16px;
+  }
+  pre,
+  code {
+  	font-family: Menlo, monospace;
+  	font-size: 14px;
+  }
+  pre {
+  	line-height: 18px;
+  }
+  pre .comment {
+  	color: #006600;
+  }
+  pre .highlight,
+  pre .highlight-comment,
+  pre .selection-highlight,
+  pre .selection-highlight-comment {
+  	background: #FFFF00;
+  }
+  pre .selection,
+  pre .selection-comment {
+  	background: #FF9632;
+  }
+  pre .ln {
+  	color: #999;
+  }
+  body {
+  	color: #222;
+  }
+  a,
+  .exampleHeading .text {
+  	color: #375EAB;
+  	text-decoration: none;
+  }
+  a:hover,
+  .exampleHeading .text:hover {
+  	text-decoration: underline;
+  }
+  p,
+  pre,
+  ul,
+  ol {
+  	margin: 20px;
+  }
+  pre {
+  	background: #e9e9e9;
+  	padding: 10px;
+
+  	-webkit-border-radius: 5px;
+  	-moz-border-radius: 5px;
+  	border-radius: 5px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .rootHeading {
+  	margin: 20px 0;
+  	padding: 0;
+  	color: #375EAB;
+  	font-weight: bold;
+  }
+  h1 {
+  	font-size: 24px;
+  }
+  h2 {
+  	font-size: 20px;
+  	background: #E0EBF5;
+  	padding: 2px 5px;
+  }
+  h3 {
+  	font-size: 20px;
+  }
+  h3,
+  h4 {
+  	margin: 20px 5px;
+  }
+  h4 {
+  	font-size: 16px;
+  }
+  .rootHeading {
+  	font-size: 20px;
+  	margin: 0;
+  }
+
+  dl {
+  	margin: 20px;
+  }
+  dd {
+  	margin: 2px 20px;
+  }
+  dl,
+  dd {
+  	font-size: 14px;
+  }
+  div#nav table td {
+  	vertical-align: top;
+  }
+
+  table.dir th {
+  	text-align: left;
+  }
+  table.dir td {
+  	word-wrap: break-word;
+  	vertical-align: top;
+  }
+  div#page.wide table.dir td.name {
+  	white-space: nowrap;
+  }
+  .alert {
+  	color: #AA0000;
+  }
+
+  div#heading {
+  	float: left;
+  	margin: 0 0 10px 0;
+  	padding: 21px 0;
+  	font-size: 20px;
+  	font-weight: normal;
+  }
+  div#heading a {
+  	color: #222;
+  	text-decoration: none;
+  }
+
+  div#topbar {
+  	background: #E0EBF5;
+  	height: 64px;
+  	overflow: hidden;
+  }
+
+  body {
+  	text-align: center;
+  }
+  div#page {
+  	width: 100%;
+  }
+  div#page > .container,
+  div#topbar > .container {
+  	text-align: left;
+  	margin-left: auto;
+  	margin-right: auto;
+  	padding: 0 20px;
+  	width: 900px;
+  }
+  div#page.wide > .container,
+  div#topbar.wide > .container {
+  	width: auto;
+  }
+  div#plusone {
+  	float: right;
+  	clear: right;
+  	margin-top: 5px;
+  }
+
+  div#footer {
+  	text-align: center;
+  	color: #666;
+  	font-size: 14px;
+  	margin: 40px 0;
+  }
+
+  div#menu > a,
+  div#menu > input,
+  div#learn .buttons a,
+  div.play .buttons a,
+  div#blog .read a {
+  	padding: 10px;
+
+  	text-decoration: none;
+  	font-size: 16px;
+
+  	-webkit-border-radius: 5px;
+  	-moz-border-radius: 5px;
+  	border-radius: 5px;
+  }
+  div#playground .buttons a,
+  div#menu > a,
+  div#menu > input {
+  	border: 1px solid #375EAB;
+  }
+  div#playground .buttons a,
+  div#menu > a {
+  	color: white;
+  	background: #375EAB;
+  }
+  #playgroundButton.active {
+  	background: white;
+  	color: #375EAB;
+  }
+  a#start,
+  div#learn .buttons a,
+  div.play .buttons a,
+  div#blog .read a {
+  	color: #222;
+  	border: 1px solid #375EAB;
+  	background: #E0EBF5;
+  }
+  .download {
+  	width: 150px;
+  }
+
+  div#menu {
+  	float: right;
+  	min-width: 590px;
+  	padding: 10px 0;
+  	text-align: right;
+  }
+  div#menu > a {
+  	margin-right: 5px;
+  	margin-bottom: 10px;
+
+  	padding: 10px;
+  }
+  div#menu > input {
+  	position: relative;
+  	top: 1px;
+  	width: 60px;
+  	background: white;
+  	color: #222;
+  }
+  div#menu > input.inactive {
+  	color: #999;
+  }
+
+  div.left {
+  	float: left;
+  	clear: left;
+  }
+  div.right {
+  	float: right;
+  	clear: right;
+  }
+  div.left,
+  div.right {
+  	width: 415px;
+  }
+
+  div#learn,
+  div#about {
+  	padding-top: 20px;
+  }
+  div#learn h2,
+  div#about {
+  	margin: 0;
+  }
+  div#about {
+  	font-size: 20px;
+  }
+
+  div#about {
+  	height: 96px;
+  }
+  div#gopher {
+  	background: url(/doc/gopher/frontpage.png) no-repeat;
+  	background-position: center top;
+  	height: 155px;
+  }
+  a#start {
+  	display: block;
+  	padding: 10px;
+
+  	text-align: center;
+  	text-decoration: none;
+
+  	-webkit-border-radius: 5px;
+  	-moz-border-radius: 5px;
+  	border-radius: 5px;
+  }
+  a#start .big {
+  	display: block;
+  	font-weight: bold;
+  	font-size: 20px;
+  }
+  a#start .desc {
+  	display: block;
+  	font-size: 14px;
+  	font-weight: normal;
+  	margin-top: 5px;
+  }
+
+  div#learn .popout {
+  	float: right;
+  	display: block;
+  	cursor: pointer;
+  	font-size: 12px;
+  	background: url(/doc/share.png) no-repeat;
+  	background-position: right top;
+  	padding: 5px 27px;
+  }
+  div#learn pre,
+  div#learn textarea {
+  	padding: 0;
+  	margin: 0;
+  	font-family: Menlo, monospace;
+  	font-size: 14px;
+  }
+  div#learn .input {
+  	padding: 10px;
+  	margin-top: 10px;
+  	height: 150px;
+
+  	-webkit-border-top-left-radius: 5px;
+  	-webkit-border-top-right-radius: 5px;
+  	-moz-border-radius-topleft: 5px;
+  	-moz-border-radius-topright: 5px;
+  	border-top-left-radius: 5px;
+  	border-top-right-radius: 5px;
+  }
+  div#learn .input textarea {
+  	width: 100%;
+  	height: 100%;
+  	border: none;
+  	outline: none;
+  	resize: none;
+  }
+  div#learn .output {
+  	border-top: none !important;
+
+  	padding: 10px;
+  	height: 59px;
+  	overflow: auto;
+
+  	-webkit-border-bottom-right-radius: 5px;
+  	-webkit-border-bottom-left-radius: 5px;
+  	-moz-border-radius-bottomright: 5px;
+  	-moz-border-radius-bottomleft: 5px;
+  	border-bottom-right-radius: 5px;
+  	border-bottom-left-radius: 5px;
+  }
+  div#learn .output pre {
+  	padding: 0;
+
+  	-webkit-border-radius: 0;
+  	-moz-border-radius: 0;
+  	border-radius: 0;
+  }
+  div#learn .input,
+  div#learn .input textarea,
+  div#learn .output,
+  div#learn .output pre {
+  	background: #FFFFD8;
+  }
+  div#learn .input,
+  div#learn .output {
+  	border: 1px solid #375EAB;
+  }
+  div#learn .buttons {
+  	float: right;
+  	padding: 20px 0 10px 0;
+  	text-align: right;
+  }
+  div#learn .buttons a {
+  	height: 16px;
+  	margin-left: 5px;
+  	padding: 10px;
+  }
+  div#learn .toys {
+  	margin-top: 8px;
+  }
+  div#learn .toys select {
+  	border: 1px solid #375EAB;
+  	margin: 0;
+  }
+  div#learn .output .exit {
+  	display: none;
+  }
+
+  div#blog,
+  div#video {
+  	margin-top: 40px;
+  }
+  div#blog > a,
+  div#blog > div,
+  div#blog > h2,
+  div#video > a,
+  div#video > div,
+  div#video > h2 {
+  	margin-bottom: 10px;
+  }
+  div#blog .title,
+  div#video .title {
+  	display: block;
+  	font-size: 20px;
+  }
+  div#blog .when {
+  	color: #666;
+  	font-size: 14px;
+  }
+  div#blog .read {
+  	text-align: right;
+  }
+
+  .toggleButton { cursor: pointer; }
+  .toggle .collapsed { display: block; }
+  .toggle .expanded { display: none; }
+  .toggleVisible .collapsed { display: none; }
+  .toggleVisible .expanded { display: block; }
+
+  table.codetable { margin-left: auto; margin-right: auto; border-style: none; }
+  table.codetable td { padding-right: 10px; }
+  hr { border-style: none; border-top: 1px solid black; }
+
+  img.gopher {
+  	float: right;
+  	margin-left: 10px;
+  	margin-bottom: 10px;
+  	z-index: -1;
+  }
+  h2 { clear: right; }
+
+  /* example and drop-down playground */
+  div.play {
+  	padding: 0 20px 40px 20px;
+  }
+  div.play pre,
+  div.play textarea,
+  div.play .lines {
+  	padding: 0;
+  	margin: 0;
+  	font-family: Menlo, monospace;
+  	font-size: 14px;
+  }
+  div.play .input {
+  	padding: 10px;
+  	margin-top: 10px;
+
+  	-webkit-border-top-left-radius: 5px;
+  	-webkit-border-top-right-radius: 5px;
+  	-moz-border-radius-topleft: 5px;
+  	-moz-border-radius-topright: 5px;
+  	border-top-left-radius: 5px;
+  	border-top-right-radius: 5px;
+
+  	overflow: hidden;
+  }
+  div.play .input textarea {
+  	width: 100%;
+  	height: 100%;
+  	border: none;
+  	outline: none;
+  	resize: none;
+
+  	overflow: hidden;
+  }
+  div#playground .input textarea {
+  	overflow: auto;
+  	resize: auto;
+  }
+  div.play .output {
+  	border-top: none !important;
+
+  	padding: 10px;
+  	max-height: 200px;
+  	overflow: auto;
+
+  	-webkit-border-bottom-right-radius: 5px;
+  	-webkit-border-bottom-left-radius: 5px;
+  	-moz-border-radius-bottomright: 5px;
+  	-moz-border-radius-bottomleft: 5px;
+  	border-bottom-right-radius: 5px;
+  	border-bottom-left-radius: 5px;
+  }
+  div.play .output pre {
+  	padding: 0;
+
+  	-webkit-border-radius: 0;
+  	-moz-border-radius: 0;
+  	border-radius: 0;
+  }
+  div.play .input,
+  div.play .input textarea,
+  div.play .output,
+  div.play .output pre {
+  	background: #FFFFD8;
+  }
+  div.play .input,
+  div.play .output {
+  	border: 1px solid #375EAB;
+  }
+  div.play .buttons {
+  	float: right;
+  	padding: 20px 0 10px 0;
+  	text-align: right;
+  }
+  div.play .buttons a {
+  	height: 16px;
+  	margin-left: 5px;
+  	padding: 10px;
+  	cursor: pointer;
+  }
+  .output .stderr {
+  	color: #933;
+  }
+  .output .system {
+  	color: #999;
+  }
+
+  /* drop-down playground */
+  #playgroundButton,
+  div#playground {
+  	/* start hidden; revealed by javascript */
+  	display: none;
+  }
+  div#playground {
+  	position: absolute;
+  	top: 63px;
+  	right: 20px;
+  	padding: 0 10px 10px 10px;
+  	z-index: 1;
+  	text-align: left;
+  	background: #E0EBF5;
+
+  	border: 1px solid #B0BBC5;
+  	border-top: none;
+
+  	-webkit-border-bottom-left-radius: 5px;
+  	-webkit-border-bottom-right-radius: 5px;
+  	-moz-border-radius-bottomleft: 5px;
+  	-moz-border-radius-bottomright: 5px;
+  	border-bottom-left-radius: 5px;
+  	border-bottom-right-radius: 5px;
+  }
+  div#playground .code {
+  	width: 520px;
+  	height: 200px;
+  }
+  div#playground .output {
+  	height: 100px;
+  }
+
+  /* Inline runnable snippets (play.js/initPlayground) */
+  #content .code pre, #content .playground pre, #content .output pre {
+          margin: 0;
+          padding: 0;
+          background: none;
+          border: none;
+  	outline: 0px solid transparent;
+          overflow: auto;
+  }
+  #content .playground .number, #content .code .number {
+          color: #999;
+  }
+  #content .code, #content .playground, #content .output {
+  	width: auto;
+          margin: 20px;
+          padding: 10px;
+          -webkit-border-radius: 5px;
+          -moz-border-radius: 5px;
+          border-radius: 5px;
+  }
+  #content .code, #content .playground {
+          background: #e9e9e9;
+  }
+  #content .output {
+          background: #202020;
+  }
+  #content .output .stdout, #content .output pre {
+          color: #e6e6e6;
+  }
+  #content .output .stderr, #content .output .error {
+          color: rgb(244, 74, 63);
+  }
+  #content .output .system, #content .output .exit {
+          color: rgb(255, 209, 77)
+  }
+  #content .buttons {
+          position: relative;
+          float: right;
+          top: -50px;
+          right: 30px;
+  }
+  #content .output .buttons {
+          top: -60px;
+          right: 0;
+          height: 0;
+  }
+  #content .buttons .kill {
+          display: none;
+          visibility: hidden;
+  }
+  a.error {
+  	font-weight: bold;
+          color: white;
+  	background-color: darkred;
+          border-bottom-left-radius: 4px;
+          border-bottom-right-radius: 4px;
+          border-top-left-radius: 4px;
+          border-top-right-radius: 4px;
+          padding: 2px 4px 2px 4px; /* TRBL */
+  }
+</style>
+<script type="text/javascript">window.initFuncs = [];</script>
+</head>
+<body>
+
+<div id="page">
+<div class="container">
+
+  <br><br><br>
+
+
+	<script type='text/javascript'>
+    document.ANALYSIS_DATA = ;
+    document.CALLGRAPH = ;
+  </script>
+
+	
+		
+
+		<div id="pkg-overview" class="toggleVisible">
+			<div>
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview</h2>
+				
+			</div>
+		</div>
+
+		<div id="pkg-callgraph" class="toggle" style="display: none">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Internal Call Graph section">Internal call graph ▹</h2>
+		</div> <!-- .expanded -->
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Internal Call Graph section">Internal call graph ▾</h2>
+                        <p>
+                          In the call graph viewer below, each node
+                          is a function belonging to this package
+                          and its children are the functions it
+                          calls&mdash;perhaps dynamically.
+                        </p>
+                        <p>
+                          The root nodes are the entry points of the
+                          package: functions that may be called from
+                          outside the package.  
+                          There may be non-exported or anonymous
+                          functions among them if they are called
+                          dynamically from another package.
+                        </p>
+                        <p>
+                          Click a node to visit that function's source code.
+                          From there you can visit its callers by
+                          clicking its declaring <code>func</code>
+                          token.
+                        </p>
+                        <p>
+                          Functions may be omitted if they were
+                          determined to be unreachable in the
+                          particular programs or tests that were
+                          analyzed.
+                        </p>
+                        <!-- Zero means show all package entry points. -->
+                        </script>                        
+		</div>
+		</div> <!-- #pkg-callgraph -->
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				<pre>const <span id="CurrVersion">CurrVersion</span> <a href="/pkg/builtin/#string">string</a> = &#34;v0.4&#34;</pre>
+				
+			
+				<pre>const <span id="TimeFormat">TimeFormat</span> <a href="/pkg/builtin/#string">string</a> = &#34;Mon Jan 2 2006 15:04:05 MST-07:00&#34;</pre>
+				
+			
+		
+		
+		
+			
+			
+			<h2 id="CreateEventMessageHandler">func <a href="/src/pkg/target/controller_messages.go?s=1108:1180#L27">CreateEventMessageHandler</a></h2>
+			<pre>func CreateEventMessageHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+CreateEventMessageHandler creates a message by the session User for a specific event
+</p>
+<p>
+Returns: the new message object
+</p>
+<p>
+Required: &lt;EVENT_ID&gt; &amp;&amp; sid
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+  curl -X POST
+       -DATA &#39;{&#34;message&#34;: {                                    \
+                 &#34;content&#34;: &#34;Let&#39;s get some coffee!&#34;           \
+               },                                              \
+               &#34;sid&#34;: &#34;05914cc6-be5d-438d-9e42-b2520f0d6146&#34; } \
+       &lt;HOST_DOMAIN:PORT&gt;/api/v1/events/:event_id/messages
+Response:
+  {
+      &#34;message&#34;: {
+          &#34;content&#34;: &#34;Let&#39;s get some coffee!&#34;,
+          &#34;created_at&#34;: &#34;2014-11-23T16:29:24Z&#34;,
+          &#34;event_id&#34;: &#34;d77bea99-856c-4189-8875-2df0cef55abe&#34;,
+          &#34;id&#34;: &#34;98cd27f1-350e-4657-943c-0c8e4d41f75d&#34;,
+          &#34;references&#34;: &#34;&#34;,
+          &#34;updated_at&#34;: &#34;2014-11-23T16:29:24Z&#34;,
+          &#34;user_id&#34;: &#34;82e196a0-554b-487c-b24b-0e1714da00a6&#34;
+      }
+  }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CreateUserEventHandler">func <a href="/src/pkg/target/controller_events.go?s=5654:5723#L162">CreateUserEventHandler</a></h2>
+			<pre>func CreateUserEventHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+CreateUserEventHandler creates an event for the session User
+</p>
+<p>
+Returns: the new event object
+</p>
+<p>
+Required: &lt;USER_ID&gt; &amp;&amp; sid
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+  curl -X POST
+       -DATA &#39;{&#34;event&#34;: {                                      \
+                 &#34;title&#34;: &#34;SXSW&#34;,                              \
+                 &#34;description&#34;: &#34;Conference&#34;,                  \
+                 &#34;lon&#34;: &#34;-75.1641667&#34;,                         \
+                 &#34;lat&#34;: &#34;39.9522222&#34;                           \
+               },                                              \
+               &#34;sid&#34;: &#34;05914cc6-be5d-438d-9e42-b2520f0d6146&#34; } \
+       &lt;HOST_DOMAIN:PORT&gt;/api/v1/users/82e196a0-554b-487c-b24b-0e1714da00a6/events
+Response:
+  {
+      &#34;event&#34;: {
+          &#34;created_at&#34;: &#34;2014-11-21T03:07:42Z&#34;,
+          &#34;description&#34;: &#34;Conference&#34;,
+          &#34;end_date&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+          &#34;id&#34;: &#34;b135d900-638b-47be-9aa5-5bf21218083b&#34;,
+          &#34;location&#34;: {
+              &#34;Lat&#34;: 39.9522222,
+              &#34;Lon&#34;: -75.1641667
+          },
+          &#34;picture_url&#34;: &#34;&#34;,
+          &#34;privacy_level&#34;: 0,
+          &#34;start_date&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+          &#34;title&#34;: &#34;SXSW&#34;,
+          &#34;updated_at&#34;: &#34;2014-11-21T03:07:42Z&#34;,
+          &#34;user_id&#34;: &#34;82e196a0-554b-487c-b24b-0e1714da00a6&#34;
+      }
+  }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="CreateUserHandler">func <a href="/src/pkg/target/controller_users.go?s=2642:2706#L89">CreateUserHandler</a></h2>
+			<pre>func CreateUserHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+CreateUserHandler creates a new user
+</p>
+<p>
+Returns: user object
+</p>
+<pre>session_id (sid)
+</pre>
+<p>
+Required: user hash &amp; facebook_id
+</p>
+<p>
+Notes: If user w/ facebook_id already exists, that user is returned instead of creating
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+   curl -X POST
+        -DATA &#39;{&#34;user&#34;: {                           \
+                  &#34;bio&#34;: &#34;blah blah blah&#34;,          \
+                  &#34;i_am_not_getting_saved&#34;: &#34;test&#34;, \
+                  &#34;first_name&#34;: &#34;Reggie&#34;,           \
+                  &#34;last_name&#34;: &#34;Bush&#34;               \
+                },                                  \
+                &#34;facebook_id&#34;: &#34;1jj32-sdfs2-sds&#34; }&#39;
+        &lt;HOST_DOMAIN:PORT&gt;/api/v1/users
+Response:
+   {
+     &#34;user&#34;: {
+       &#34;id&#34;: &#34;c8a668fe-2574-47a6-a61e-dcd4a35fde54&#34;,
+       &#34;first_name&#34;: &#34;Reggie&#34;,
+       &#34;last_name&#34;: &#34;Bush&#34;,
+       &#34;email&#34;: &#34;&#34;,
+       &#34;avatar&#34;: &#34;&#34;,
+       &#34;bio&#34;: &#34;blah blah blah&#34;,
+       &#34;created_at&#34;: &#34;2014-11-18T04:38:20Z&#34;,
+       &#34;updated_at&#34;: &#34;2014-11-18T04:38:20Z&#34;
+     },
+     &#34;sid&#34;: &#34;a4f326bb-5cb8-4f1c-be14-70feb21bd00a&#34;
+   }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DeleteMessageHandler">func <a href="/src/pkg/target/controller_messages.go?s=2482:2549#L80">DeleteMessageHandler</a></h2>
+			<pre>func DeleteMessageHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+DeleteMessageHandler deletes a persisted Message object owned by a User
+</p>
+<p>
+Returns: boolean &#34;result&#34; indicating result of operation
+</p>
+<p>
+Required: &lt;MESSAGE_ID&gt;
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+   curl -X DELETE &lt;HOST_DOMAIN:PORT&gt;/api/v1/messages/&lt;MESSAGE_ID&gt;
+Response:
+   {
+       &#34;result&#34;: true
+   }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DeleteUserEventHandler">func <a href="/src/pkg/target/controller_events.go?s=12108:12177#L373">DeleteUserEventHandler</a></h2>
+			<pre>func DeleteUserEventHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+DeleteUserEventHandler deletes a persisted Event object owned by a User
+</p>
+<p>
+Returns: boolean &#34;result&#34; indicating result of operation
+</p>
+<p>
+Required: &lt;USER_ID&gt; of owner &amp;&amp; &lt;EVENT_ID&gt; of event to be deleted
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+   curl -X DELETE &lt;HOST_DOMAIN:PORT&gt;/api/v1/users/&lt;USER_ID&gt;/events/&lt;EVENT_ID&gt;
+Response:
+   {
+       &#34;result&#34;: true
+   }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="DeleteUserHandler">func <a href="/src/pkg/target/controller_users.go?s=7362:7426#L259">DeleteUserHandler</a></h2>
+			<pre>func DeleteUserHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+DeleteUserHandler deletes a persisted user object
+</p>
+<p>
+Returns: boolean &#34;result&#34; indicating result of operation
+</p>
+<p>
+Required: id &amp; sid
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+   curl -X DELETE &lt;HOST_DOMAIN:PORT&gt;/api/v1/users/c8a668fe-2574-47a6-a61e-dcd4a35fde54
+Response:
+   {
+       &#34;result&#34;: true
+   }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IndexEventMessagesHandler">func <a href="/src/pkg/target/controller_messages.go?s=7637:7709#L255">IndexEventMessagesHandler</a></h2>
+			<pre>func IndexEventMessagesHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+IndexEventMessagesHandler returns a paginated list of messages belonging to an event
+</p>
+<p>
+TODO: currently isn&#39;t paginating
+</p>
+<p>
+Required: &lt;EVENT_ID&gt; &amp;&amp; sid
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+  curl -X GET &lt;HOST_DOMAIN:PORT&gt;/api/v1/events/&lt;EVENT_ID&gt;/messages?sid=05914cc6-be5d-438d-9e42-b2520f0d6146
+Response:
+  {
+      &#34;messages&#34;: [
+          {
+              &#34;id&#34;: &#34;98cd27f1-350e-4657-943c-0c8e4d41f75d&#34;,
+              &#34;user_id&#34;: &#34;82e196a0-554b-487c-b24b-0e1714da00a6&#34;,
+              &#34;event_id&#34;: &#34;d77bea99-856c-4189-8875-2df0cef55abe&#34;,
+              &#34;references&#34;: &#34;&#34;,
+              &#34;content&#34;: &#34;No thanks.&#34;,
+              &#34;created_at&#34;: &#34;2014-11-23T16:29:24Z&#34;,
+              &#34;updated_at&#34;: &#34;2014-11-23T16:32:29Z&#34;
+          }
+      ]
+  }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IndexEventsHandler">func <a href="/src/pkg/target/controller_events.go?s=3723:3788#L106">IndexEventsHandler</a></h2>
+			<pre>func IndexEventsHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+IndexEventsHandler returns a paginated list of events that are centered around a location
+</p>
+<p>
+TODO: this should be geo-based, if no lat/lon passed in, it should pick a random location
+</p>
+<p>
+TODO: currently isn&#39;t paginating
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+  curl -X GET &lt;HOST_DOMAIN:PORT&gt;/api/v1/events
+Response:
+  {
+      &#34;events&#34;: [
+          {
+              &#34;Id&#34;: &#34;7700de02-214e-4367-8402-c30581c83c37&#34;,
+              &#34;UserId&#34;: &#34;92b4fbfc-77ef-4c12-917c-913394ce6767&#34;,
+              &#34;Location&#34;: {
+                  &#34;Lon&#34;: -73.1641667,
+                  &#34;Lat&#34;: 41.9522222
+              },
+              &#34;Title&#34;: &#34;All The Drones&#34;,
+              &#34;Description&#34;: &#34;Robot Wars&#34;,
+              &#34;PrivacyLevel&#34;: 0,
+              &#34;StartDate&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+              &#34;EndDate&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+              &#34;CreatedAt&#34;: &#34;2014-10-24T02:17:10Z&#34;,
+              &#34;UpdatedAt&#34;: &#34;2014-10-24T02:17:10Z&#34;
+          },
+          {
+              &#34;Id&#34;: &#34;d77ee502-1911-4ef9-8afa-b5cd90912441&#34;,
+              &#34;UserId&#34;: &#34;92b4fbfc-77ef-4c12-917c-913394ce6767&#34;,
+              &#34;Location&#34;: {
+                  &#34;Lon&#34;: -75.1641667,
+                  &#34;Lat&#34;: 39.9522222
+              },
+              &#34;Title&#34;: &#34;SXSW&#34;,
+              &#34;Description&#34;: &#34;Conference&#34;,
+              &#34;PrivacyLevel&#34;: 0,
+              &#34;StartDate&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+              &#34;EndDate&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+              &#34;CreatedAt&#34;: &#34;2014-10-24T01:51:21Z&#34;,
+              &#34;UpdatedAt&#34;: &#34;2014-10-24T01:51:21Z&#34;
+          }
+      ]
+  }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IndexUserEventsHandler">func <a href="/src/pkg/target/controller_events.go?s=1301:1370#L35">IndexUserEventsHandler</a></h2>
+			<pre>func IndexUserEventsHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+IndexUserEventsHandler returns a paginated list of events owned by the session user
+</p>
+<p>
+TODO: currently isn&#39;t paginating
+</p>
+<p>
+Required: &lt;USER_ID&gt; &amp;&amp; sid
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+  curl -X GET &lt;HOST_DOMAIN:PORT&gt;/api/v1/users/92b4fbfc-77ef-4c12-917c-913394ce6767/events?sid=05914cc6-be5d-438d-9e42-b2520f0d6146
+Response:
+  {
+      &#34;events&#34;: [
+          {
+              &#34;id&#34;: &#34;b135d900-638b-47be-9aa5-5bf21218083b&#34;,
+              &#34;user_id&#34;: &#34;82e196a0-554b-487c-b24b-0e1714da00a6&#34;,
+              &#34;picture_url&#34;: &#34;&#34;,
+              &#34;lon&#34;: &#34;&#34;,
+              &#34;lat&#34;: &#34;&#34;,
+              &#34;location&#34;: {
+                  &#34;Lon&#34;: -75.1641667,
+                  &#34;Lat&#34;: 39.9522222
+              },
+              &#34;title&#34;: &#34;Test&#34;,
+              &#34;description&#34;: &#34;Conference&#34;,
+              &#34;privacy_level&#34;: 0,
+              &#34;start_date&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+              &#34;end_date&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+              &#34;created_at&#34;: &#34;2014-11-21T03:07:42Z&#34;,
+              &#34;updated_at&#34;: &#34;2014-11-21T03:10:03Z&#34;
+          }
+      ]
+  }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IndexUserMessagesHandler">func <a href="/src/pkg/target/controller_messages.go?s=6116:6187#L206">IndexUserMessagesHandler</a></h2>
+			<pre>func IndexUserMessagesHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+IndexUserMessagesHandler shows linked messages for the current user
+</p>
+<p>
+TODO: currently isn&#39;t paginating
+</p>
+<p>
+Returns: Paginated list of messages for the current user
+</p>
+<p>
+Required: sid
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+  curl -X GET &lt;HOST_DOMAIN:PORT&gt;/api/v1/messages
+Response:
+  {
+      &#34;messages&#34;: [
+          {
+              &#34;id&#34;: &#34;98cd27f1-350e-4657-943c-0c8e4d41f75d&#34;,
+              &#34;user_id&#34;: &#34;82e196a0-554b-487c-b24b-0e1714da00a6&#34;,
+              &#34;event_id&#34;: &#34;d77bea99-856c-4189-8875-2df0cef55abe&#34;,
+              &#34;references&#34;: &#34;&#34;,
+              &#34;content&#34;: &#34;Let&#39;s get some coffee!&#34;,
+              &#34;created_at&#34;: &#34;2014-11-23T16:29:24Z&#34;,
+              &#34;updated_at&#34;: &#34;2014-11-23T16:29:24Z&#34;
+          }
+      ]
+  }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="IndexUsersHandler">func <a href="/src/pkg/target/controller_users.go?s=1024:1088#L36">IndexUsersHandler</a></h2>
+			<pre>func IndexUsersHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+IndexUsersHandler returns paginated list of users
+</p>
+<p>
+TODO: currently isn&#39;t paginating
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+  curl -X GET &lt;HOST_DOMAIN:PORT&gt;/api/v1/users
+Response:
+{
+  &#34;users&#34;: [
+    {
+      &#34;id&#34;: &#34;2d6a3836-5535-4f8e-8e77-7eff45561984&#34;,
+      &#34;first_name&#34;: &#34;bobby&#34;,
+      &#34;last_name&#34;: &#34;&#34;,
+      &#34;email&#34;: &#34;&#34;,
+      &#34;avatar&#34;: &#34;&#34;,
+      &#34;bio&#34;: &#34;&#34;,
+      &#34;created_at&#34;: &#34;2014-11-10T18:19:58Z&#34;,
+      &#34;updated_at&#34;: &#34;2014-11-10T21:02:21Z&#34;
+    },
+    {
+      &#34;id&#34;: &#34;3619f498-bcaf-44e5-9b80-02a07566f177&#34;,
+      &#34;first_name&#34;: &#34;&#34;,
+      &#34;last_name&#34;: &#34;&#34;,
+      &#34;email&#34;: &#34;&#34;,
+      &#34;avatar&#34;: &#34;&#34;,
+      &#34;bio&#34;: &#34;Mercury!!!!&#34;,
+      &#34;created_at&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+      &#34;updated_at&#34;: &#34;0001-01-01T00:00:00Z&#34;
+    },
+    ...
+  ]
+}
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="NewServer">func <a href="/src/pkg/target/server.go?s=1818:1858#L49">NewServer</a></h2>
+			<pre>func NewServer(addr <a href="/pkg/builtin/#string">string</a>) *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Server">Server</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ShowEventHandler">func <a href="/src/pkg/target/controller_events.go?s=11423:11486#L348">ShowEventHandler</a></h2>
+			<pre>func ShowEventHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+ShowEventHandler show a new user
+</p>
+<p>
+Returns: Event object corresponding to the ID passed in
+</p>
+<p>
+Required: &lt;EVENT_ID&gt;
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+   curl -X GET &lt;HOST_DOMAIN:PORT&gt;/api/v1/events/&lt;EVENT_ID&gt;
+Response:
+   {
+       &#34;event&#34;: {
+           &#34;id&#34;: &#34;b135d900-638b-47be-9aa5-5bf21218083b&#34;,
+           &#34;user_id&#34;: &#34;82e196a0-554b-487c-b24b-0e1714da00a6&#34;,
+           &#34;picture_url&#34;: &#34;&#34;,
+           &#34;lon&#34;: &#34;&#34;,
+           &#34;lat&#34;: &#34;&#34;,
+           &#34;location&#34;: {
+               &#34;Lon&#34;: -75.1641667,
+               &#34;Lat&#34;: 39.9522222
+           },
+           &#34;title&#34;: &#34;Test&#34;,
+           &#34;description&#34;: &#34;Conference&#34;,
+           &#34;privacy_level&#34;: 0,
+           &#34;start_date&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+           &#34;end_date&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+           &#34;created_at&#34;: &#34;2014-11-21T03:07:42Z&#34;,
+           &#34;updated_at&#34;: &#34;2014-11-21T03:10:03Z&#34;
+       }
+   }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="ShowUserHandler">func <a href="/src/pkg/target/controller_users.go?s=4523:4585#L159">ShowUserHandler</a></h2>
+			<pre>func ShowUserHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+ShowUserHandler show a new user
+</p>
+<p>
+Returns: user object thats saved for that id
+</p>
+<p>
+Required: id
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+   curl -X GET &lt;HOST_DOMAIN:PORT&gt;/api/v1/users/c8a668fe-2574-47a6-a61e-dcd4a35fde54
+Response:
+   {
+       &#34;user&#34;: {
+           &#34;id&#34;: &#34;c8a668fe-2574-47a6-a61e-dcd4a35fde54&#34;,
+           &#34;first_name&#34;: &#34;Reggie&#34;,
+           &#34;last_name&#34;: &#34;Bush&#34;,
+           &#34;email&#34;: &#34;&#34;,
+           &#34;avatar&#34;: &#34;&#34;,
+           &#34;bio&#34;: &#34;blah blah blah&#34;,
+           &#34;created_at&#34;: &#34;2014-11-18T04:38:20Z&#34;,
+           &#34;updated_at&#34;: &#34;2014-11-18T04:38:20Z&#34;
+       }
+   }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="StartServer">func <a href="/src/pkg/target/server.go?s=2103:2140#L61">StartServer</a></h2>
+			<pre>func StartServer(server *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Server">Server</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="StatusHandler">func <a href="/src/pkg/target/controller_misc.go?s=285:345#L7">StatusHandler</a></h2>
+			<pre>func StatusHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+StatusHandler is used to quickly test if the server is up and responding
+Example:
+</p>
+<pre>Request:
+  curl -X GET localhost:3000/ping
+Response:
+  {
+      &#34;pong&#34;: true
+  }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UpdateMessageHandler">func <a href="/src/pkg/target/controller_messages.go?s=4239:4306#L139">UpdateMessageHandler</a></h2>
+			<pre>func UpdateMessageHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+UpdateMessageHandler updates a persisted message object owned by the current session User
+</p>
+<p>
+Returns: updated message object and boolean, &#34;changed&#34; indicating if things were changed
+</p>
+<p>
+Required: &lt;MESSAGE_ID&gt; &amp;&amp; sid
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+   curl -X PUT
+        -DATA &#39;{ &#34;message&#34; { &#34;content&#34;: &#34;No thanks.&#34;}, &#34;sid&#34;: &#34;05914cc6-be5d-438d-9e42-b2520f0d6146&#34;}&#39;
+        &lt;HOST_DOMAIN:PORT&gt;/api/v1/messages/&lt;MESSAGE_ID&gt;
+Response:
+   {
+       &#34;changed&#34;: true,
+       &#34;message&#34;: {
+           &#34;id&#34;: &#34;98cd27f1-350e-4657-943c-0c8e4d41f75d&#34;,
+           &#34;user_id&#34;: &#34;82e196a0-554b-487c-b24b-0e1714da00a6&#34;,
+           &#34;event_id&#34;: &#34;d77bea99-856c-4189-8875-2df0cef55abe&#34;,
+           &#34;references&#34;: &#34;&#34;,
+           &#34;content&#34;: &#34;No thanks.&#34;,
+           &#34;created_at&#34;: &#34;2014-11-23T16:29:24Z&#34;,
+           &#34;updated_at&#34;: &#34;2014-11-23T11:32:29.575053997-05:00&#34;
+       }
+   }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UpdateUserEventHandler">func <a href="/src/pkg/target/controller_events.go?s=8461:8530#L248">UpdateUserEventHandler</a></h2>
+			<pre>func UpdateUserEventHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+UpdateUserEventHandler updates a persisted event object owned by a User
+</p>
+<p>
+Returns: updated event object and boolean, &#34;changed&#34; indicating if things were changed
+</p>
+<p>
+Required: &lt;USER_ID&gt; &amp;&amp; &lt;EVENT_ID&gt; &amp;&amp; sid
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+   curl -X PUT
+        -DATA &#39;{ &#34;event&#34; { &#34;title&#34;: &#34;Test&#34;}, &#34;sid&#34;: &#34;05914cc6-be5d-438d-9e42-b2520f0d6146&#34;}&#39;
+        &lt;HOST_DOMAIN:PORT&gt;/api/v1/users/&lt;USER_ID&gt;/events/&lt;EVENT_ID&gt;
+Response:
+   {
+       &#34;changed&#34;: true,
+       &#34;event&#34;: {
+           &#34;id&#34;: &#34;b135d900-638b-47be-9aa5-5bf21218083b&#34;,
+           &#34;user_id&#34;: &#34;82e196a0-554b-487c-b24b-0e1714da00a6&#34;,
+           &#34;picture_url&#34;: &#34;&#34;,
+           &#34;lon&#34;: &#34;&#34;,
+           &#34;lat&#34;: &#34;&#34;,
+           &#34;location&#34;: {
+               &#34;Lon&#34;: -75.1641667,
+               &#34;Lat&#34;: 39.9522222
+           },
+           &#34;title&#34;: &#34;Test&#34;,
+           &#34;description&#34;: &#34;Conference&#34;,
+           &#34;privacy_level&#34;: 0,
+           &#34;start_date&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+           &#34;end_date&#34;: &#34;0001-01-01T00:00:00Z&#34;,
+           &#34;created_at&#34;: &#34;2014-11-21T03:07:42Z&#34;,
+           &#34;updated_at&#34;: &#34;2014-11-20T22:10:03.921444177-05:00&#34;
+       }
+   }
+</pre>
+
+			
+			
+
+		
+			
+			
+			<h2 id="UpdateUserHandler">func <a href="/src/pkg/target/controller_users.go?s=5807:5871#L199">UpdateUserHandler</a></h2>
+			<pre>func UpdateUserHandler(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>)</pre>
+			<p>
+UpdateUserHandler updates a persisted user object
+</p>
+<p>
+Returns: updated user object and boolean, &#34;changed&#34; indicating if things were changed
+</p>
+<p>
+Required: id &amp; sid
+</p>
+<p>
+Example:
+</p>
+<pre>Request:
+   curl -X PUT
+        -DATA &#39;{&#34;user&#34;: {                          \
+                  &#34;i_am_not_getting_saved&#34;: &#34;test&#34; \
+                  &#34;first_name&#34;: &#34;Joe&#34;,             \
+                  &#34;last_name&#34;: &#34;Montana&#34; } }&#39;
+        &lt;HOST_DOMAIN:PORT&gt;/api/v1/users/c8a668fe-2574-47a6-a61e-dcd4a35fde54
+Response:
+   {
+       &#34;changed&#34;: true,
+       &#34;user&#34;: {
+           &#34;avatar&#34;: &#34;&#34;,
+           &#34;bio&#34;: &#34;blah blah blah&#34;,
+           &#34;created_at&#34;: &#34;2014-11-18T04:38:20Z&#34;,
+           &#34;email&#34;: &#34;&#34;,
+           &#34;facebook_id&#34;: &#34;1jj32-sdfs2-sds&#34;,
+           &#34;first_name&#34;: &#34;Joe&#34;,
+           &#34;id&#34;: &#34;c8a668fe-2574-47a6-a61e-dcd4a35fde54&#34;,
+           &#34;last_name&#34;: &#34;Montana&#34;,
+           &#34;updated_at&#34;: &#34;2014-11-18T17:25:51Z&#34;
+       }
+   }
+</pre>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="Event">type <a href="/src/pkg/target/models.go?s=1089:2030#L31">Event</a></h2>
+			<pre>type Event struct {
+    Id           <a href="/pkg/builtin/#string">string</a>      `gorethink:&#34;id,omitempty&#34;  json:&#34;id&#34;`
+    UserId       <a href="/pkg/builtin/#string">string</a>      `gorethink:&#34;user_id&#34;       json:&#34;user_id&#34;`
+    PictureUrl   <a href="/pkg/builtin/#string">string</a>      `gorethink:&#34;picture_url&#34;   json:&#34;picture_url&#34;`
+    Lon          <a href="/pkg/builtin/#string">string</a>      `gorethink:&#34;-&#34;             json:&#34;lon&#34;`
+    Lat          <a href="/pkg/builtin/#string">string</a>      `gorethink:&#34;-&#34;             json:&#34;lat&#34;`
+    Location     <a href="/pkg/github.com/dancannon/gorethink/types/">types</a>.<a href="/pkg/github.com/dancannon/gorethink/types/#Point">Point</a> `gorethink:&#34;location&#34;      json:&#34;location&#34;`
+    Title        <a href="/pkg/builtin/#string">string</a>      `gorethink:&#34;title&#34;         json:&#34;title&#34;`
+    Description  <a href="/pkg/builtin/#string">string</a>      `gorethink:&#34;description&#34;   json:&#34;description&#34;`
+    PrivacyLevel <a href="/pkg/builtin/#int">int</a>         `gorethink:&#34;privacy_level&#34; json:&#34;privacy_level&#34;`
+    StartDate    <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>   `gorethink:&#34;start_date&#34;    json:&#34;start_date&#34;`
+    EndDate      <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>   `gorethink:&#34;end_date&#34;      json:&#34;end_date&#34;`
+    CreatedAt    <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>   `gorethink:&#34;created_at&#34;    json:&#34;created_at&#34;`
+    UpdatedAt    <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>   `gorethink:&#34;updated_at&#34;    json:&#34;updated_at&#34;`
+}</pre>
+			
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Message">type <a href="/src/pkg/target/models.go?s=2032:2550#L47">Message</a></h2>
+			<pre>type Message struct {
+    Id         <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;id,omitempty&#34;  json:&#34;id&#34;`
+    UserId     <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;user_id&#34;       json:&#34;user_id&#34;`
+    EventId    <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;event_id&#34;      json:&#34;event_id&#34;`
+    References <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;references&#34;    json:&#34;references&#34;`
+    Content    <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;content&#34;       json:&#34;content&#34;`
+    CreatedAt  <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `gorethink:&#34;created_at&#34;    json:&#34;created_at&#34;`
+    UpdatedAt  <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `gorethink:&#34;updated_at&#34;    json:&#34;updated_at&#34;`
+}</pre>
+			
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Params">type <a href="/src/pkg/target/models.go?s=2881:3088#L66">Params</a></h2>
+			<pre>type Params struct {
+    User       <a href="#User">User</a>    `json:&#34;user&#34;`
+    Event      <a href="#Event">Event</a>   `json:&#34;event&#34;`
+    Message    <a href="#Message">Message</a> `json:&#34;message&#34;`
+    FacebookId <a href="/pkg/builtin/#string">string</a>  `json:&#34;facebook_id&#34;`
+    Sid        <a href="/pkg/builtin/#string">string</a>  `json:&#34;sid&#34;`
+}</pre>
+			
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="RawParams">type <a href="/src/pkg/target/models.go?s=3090:3350#L74">RawParams</a></h2>
+			<pre>type RawParams struct {
+    User       map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a> `json:&#34;user&#34;`
+    Event      map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a> `json:&#34;event&#34;`
+    Message    map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a> `json:&#34;message&#34;`
+    FacebookId <a href="/pkg/builtin/#string">string</a>            `json:&#34;facebook_id&#34;`
+    Sid        <a href="/pkg/builtin/#string">string</a>            `json:&#34;sid&#34;`
+}</pre>
+			
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="User">type <a href="/src/pkg/target/models.go?s=447:1087#L19">User</a></h2>
+			<pre>type User struct {
+    Id         <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;id,omitempty&#34;  json:&#34;id&#34;`
+    FirstName  <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;first_name&#34;    json:&#34;first_name&#34;`
+    LastName   <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;last_name&#34;     json:&#34;last_name&#34;`
+    Email      <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;email&#34;         json:&#34;email&#34;`
+    Avatar     <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;avatar&#34;        json:&#34;avatar&#34;`
+    Bio        <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;bio&#34;           json:&#34;bio&#34;`
+    FacebookId <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;facebook_id&#34;   json:&#34;-&#34;`
+    CreatedAt  <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `gorethink:&#34;created_at&#34;    json:&#34;created_at&#34;`
+    UpdatedAt  <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `gorethink:&#34;updated_at&#34;    json:&#34;updated_at&#34;`
+}</pre>
+			
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="UserSession">type <a href="/src/pkg/target/models.go?s=2552:2860#L57">UserSession</a></h2>
+			<pre>type UserSession struct {
+    Id        <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;id,omitempty&#34;  json:&#34;id&#34;`
+    UserId    <a href="/pkg/builtin/#string">string</a>    `gorethink:&#34;user_id&#34;       json:&#34;user_id&#34;`
+    CreatedAt <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `gorethink:&#34;created_at&#34;    json:&#34;created_at&#34;`
+    UpdatedAt <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a> `gorethink:&#34;updated_at&#34;    json:&#34;updated_at&#34;`
+}</pre>
+			
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+  <br><br><br>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+</body>
+</html>
