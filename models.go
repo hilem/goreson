@@ -75,6 +75,17 @@ type Participant struct {
   UpdatedAt      time.Time `gorethink:"updated_at"      json:"updated_at"`
 }
 
+type ParticipantWrite struct {
+  Id             string    `gorethink:"id,omitempty"    json:"id"`
+  EventId        string    `gorethink:"event_id"        json:"event_id"`
+  UserId         string    `gorethink:"user_id"         json:"user_id"`
+  RequestStatus  string    `gorethink:"request_status"  json:"request_status"`
+  ResponseStatus string    `gorethink:"response_status" json:"response_status"`
+  CreatedAt      time.Time `gorethink:"created_at"      json:"created_at"`
+  UpdatedAt      time.Time `gorethink:"updated_at"      json:"updated_at"`
+}
+
+
 type UserSession struct {
   Id         string        `gorethink:"id,omitempty"  json:"id"`
   UserId     string        `gorethink:"user_id"       json:"user_id"`
@@ -85,21 +96,21 @@ type UserSession struct {
 // Helper Structs
 
 type Params struct {
-  User        User        `json:"user"`
-  Event       Event       `json:"event"`
-  Message     Message     `json:"message"`
-  Participant Participant `json:"participant"`
-  FacebookId  string      `json:"facebook_id"`
-  Sid         string      `json:"sid"`
+  User        User             `json:"user"`
+  Event       Event            `json:"event"`
+  Message     Message          `json:"message"`
+  Participant ParticipantWrite `json:"participant"`
+  FacebookId  string           `json:"facebook_id"`
+  Sid         string           `json:"sid"`
 }
 
 type RawParams struct {
-  User        map[string]string `json:"user"`
-  Event       map[string]string `json:"event"`
-  Message     map[string]string `json:"message"`
-  Participant map[string]string `json:"participant"`
-  FacebookId  string            `json:"facebook_id"`
-  Sid         string            `json:"sid"`
+  User             map[string]string `json:"user"`
+  Event            map[string]string `json:"event"`
+  Message          map[string]string `json:"message"`
+  Participant      map[string]string `json:"participant"`
+  FacebookId       string            `json:"facebook_id"`
+  Sid              string            `json:"sid"`
 }
 
 

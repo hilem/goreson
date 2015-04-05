@@ -42,7 +42,7 @@ import (
 )
 
 const TimeFormat string = "Mon Jan 2 2006 15:04:05 MST-07:00"
-const CurrVersion string = "v0.6.0"
+const CurrVersion string = "v0.6.1"
 
 var (
   router  *pat.PatternServeMux

@@ -54,7 +54,7 @@ func CreateEventParticipantHandler(w http.ResponseWriter, req *http.Request) {
   }
 
   t := time.Now()
-  participant := &Participant{
+  participant := &ParticipantWrite{
     UserId:         user.Id,
     EventId:        event.Id,
     RequestStatus:  "requested",
@@ -96,7 +96,7 @@ func DeleteParticipantHandler(w http.ResponseWriter, req *http.Request) {
   }
   log.Printf("\n\n%+v\n\n", rawParams)
 
-  participant := Participant{}
+  participant := ParticipantWrite{}
   if ok := findParticipant(id, &participant, w, req); !ok {
     return
   }
@@ -152,7 +152,7 @@ func UpdateParticipantHandler(w http.ResponseWriter, req *http.Request) {
   fmt.Println("")
   log.Println("Attempting to Update Participant#" + id)
 
-  participant := Participant{}
+  participant := ParticipantWrite{}
   if ok := findParticipant(id, &participant, w, req); !ok {
     return
   }
@@ -398,7 +398,7 @@ func IndexEventParticipantsHandler(w http.ResponseWriter, req *http.Request) {
   }, w)
 }
 
-func findParticipant(id string, p *Participant, w http.ResponseWriter, req *http.Request) bool {
+func findParticipant(id string, p *ParticipantWrite, w http.ResponseWriter, req *http.Request) bool {
 	res, err := r.Table("participants").Get(id).Run(session)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)

@@ -9,3 +9,7 @@
 ## v0.6.0 - 31 Mar 2015
 
 - Added Participants table
+
+## v0.6.1 - 05 Apr 2015
+
+- [bug] Participants returning Joined User/Event wasn't working properly

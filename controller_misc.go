@@ -20,8 +20,8 @@ func StatusHandler(w http.ResponseWriter, req *http.Request) {
   sendJson(map[string]interface{}{
     "pong": "true",
     "version": CurrVersion,
-    "released_on": "31/03/2015",
-    "recent_changes": `- Added Participants table`,
+    "released_on": "05/04/2015",
+    "recent_changes": `- [bug] Participants returning Joined User/Event wasn't working properly`,
   }, w)
 }
 
